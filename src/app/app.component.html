@@ -1,0 +1,44 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="text-center mb-4">
+        <!-- Enhanced Heading -->
+        <h1 class="display-4 text-primary font-weight-bold highlight-text">
+          Ravi Chat Bot
+        </h1>
+        <p class="lead text-muted">
+          An interactive chatbot experience
+        </p>
+      </div>
+      <!-- Notification Alert -->
+      <div style="color: red; font-weight: bold;text-align: center; margin-bottom: 1rem;">
+        Happy Raksha Bandhan!
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div #chatBox class="chat-box border p-3" style="height: 300px; overflow-y: auto;">
+            <div *ngFor="let message of messages" [ngClass]="{'text-primary': message.type === 'user-message', 'text-success': message.type === 'bot-message'}">
+              <div class="message mb-2">
+                <span>{{ message.text }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer bg-light">
+          <form (ngSubmit)="sendMessage()" #messageForm="ngForm">
+            <div class="input-group">
+              <input type="text" class="form-control" name="message" [(ngModel)]="userMessage" placeholder="Type your message here..." required>
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">Send</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <footer class="text-center mt-4 text-muted">
+        <p>&copy; 2024 Ravi Chat Bot. All rights reserved.</p>
+      </footer>
+    </div>
+  </div>
+</div>
